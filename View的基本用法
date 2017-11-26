@@ -1,0 +1,50 @@
+ Paint mPaint1; 
+ Paint mPaint2; 
+ int mViewWidth; 
+ Paint mPaint; //首先要定义要用的东西
+
+//下面重写了三个构造方法，并初始化
+public textview(Context context) {
+    super(context);
+    init();
+}
+
+public textview(Context context, AttributeSet attrs) {
+    super(context, attrs);
+    init();
+}
+
+public textview(Context context, AttributeSet attrs,
+              int defStyleAttr) {
+    super(context, attrs, defStyleAttr);
+    init();
+}
+
+@Override 
+protected void onDraw(Canvas canvas) {
+    canvas.save();
+  super.onDraw(canvas);
+canvas.restore();                         //这个相当于一个合并图层作用，如果把操作全部放在下面就会导致文字被后来的矩形所覆盖
+}
+}
+//初始化的方法
+private void init() {
+    //初始化用来绘制背景边框的笔
+    mPaint1=new Paint();
+    mPaint2=new Paint();
+    mPaint1.setColor(Color.RED);
+    mPaint2.setColor(Color.GRAY);
+    mPaint1.setStyle(Paint.Style.FILL);
+    mPaint2.setStyle(Paint.Style.FILL);
+
+
+}
+//当大小变化时回调的方法
+@Override
+protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+    super.onSizeChanged(w, h, oldw, oldh);
+ 
+       
+   
+}
+}
