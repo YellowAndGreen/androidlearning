@@ -1,100 +1,23 @@
-package com.example.test12;
+#To 万子义
+---
+*觉得写明信片好麻烦...只好用这个了...（我是不是很懒.）*
+</hr>
+>选生日礼物好困难嗷嗷嗷，所以就随便（真）买了一个...但是我的法器是真的价值连城嗷嗷嗷...黄大师亲自书写...并开光...
 
-import android.content.Context;
-import android.content.res.TypedArray;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.LinearGradient;
-import android.graphics.Matrix;
-import android.graphics.Paint;
-import android.graphics.Shader;
-import android.util.AttributeSet;
-import android.view.View;
-import android.widget.TextView;
+---
 
-import org.w3c.dom.Attr;
+###**这一天特殊的原因**
+* 这一天是冬至.在易经的十二消息卦里面是是复卦，即地雷复
+* 复卦是什么呢
+* 上面五个阴爻，下面一个阳爻
+* 显而易见，这个时候是一阳初生之时
+>**宜修炼**
+这是一年之中阳气最弱的时候，也是阳气刚生发的时候.修行，就是修这将欲变而未变之间的一刹那，若能将此掌握了，老者返老还童也不是什么难事.
+>**一阳指**
+我个人认为，一阳指的精髓就在于内劲。和也？如复卦一般，一阳指虽看似无力，但一旦进入体内，内劲就会生发（如阳气聚集），对敌人造成巨大的伤害.
+>**六脉神剑**
+六脉是哪六脉呢？大概是按照易经六爻的说法，毕竟物以稀为贵嘛，此时只有一个孤零零的阳爻，所以这个就成了老大，能够驾驭其他五爻.所以我觉得六脉神剑应该是一阳指的进阶秘籍。易经上对乾卦的解释是：‘元，亨，利，贞’，这里的元是指创始的意思，它有一股新生的力量，而其他卦的‘元’，都是开始的意思，这个新生的力量不断扩展，力量也远超前者.类比这个，六脉神剑是基于一阳指的完全态，必须经过六六三十六年才能练成.
 
-public class textview extends android.support.v7.widget.AppCompatTextView {
-   Paint mPaint1;
-   Paint mPaint2;
-int mViewWidth;
-Paint mPaint;
-LinearGradient mLinearGradient;
-Matrix mGradientMatrix;
-int mTranslate;
+###**我还是说人话吧...**
+>武功秘籍都是说着玩的..但是这一天确实是修炼的重要节点...不说了...再说我就成神棍了
 
-    public textview(Context context) {
-        super(context);
-        init();
-    }
-
-    public textview(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        init();
-    }
-
-    public textview(Context context, AttributeSet attrs,
-                  int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-        init();
-    }
-
-
-@Override
-protected void onDraw(Canvas canvas) {
-
-    canvas.drawRect(0,0,getMeasuredWidth(),getMeasuredHeight(),mPaint1);
-        canvas.drawRect(10,10,getMeasuredWidth()-10,getMeasuredHeight()-10,mPaint2);
-        canvas.save();
-        canvas.translate(10,0);
-    super.onDraw(canvas);
-    canvas.restore();                         //这个相当于一个合并图层作用，如果把操作全部放在下面就会导致文字被后来的矩形所覆盖
-    if (mGradientMatrix !=null){
-        mTranslate += mViewWidth / 5;
-        if(mTranslate>2*mViewWidth){
-            mTranslate=-mViewWidth;
-        }
-        mGradientMatrix.setTranslate(mTranslate,0);       //先改变矩阵，再改变渐变器
-        mLinearGradient.setLocalMatrix(mGradientMatrix);
-        postInvalidateDelayed(100);
-    }
-}
-
-
-
-
-    private void init() {
-        //初始化用来绘制背景边框的笔
-        mPaint1=new Paint();
-        mPaint2=new Paint();
-        mPaint1.setColor(Color.RED);
-        mPaint2.setColor(Color.GRAY);
-        mPaint1.setStyle(Paint.Style.FILL);
-        mPaint2.setStyle(Paint.Style.FILL);
-
-
-    }
-
-    @Override
-    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-        super.onSizeChanged(w, h, oldw, oldh);
-        //闪动效果的对象初始化工作
-        if(mViewWidth==0){
-            mViewWidth=getMeasuredWidth();
-            if(mViewWidth>0){
-                //通过getPaint()方法获取绘制TextView的画笔
-                mPaint=getPaint();//这个画笔是Textview的
-                mLinearGradient= new LinearGradient(0,0,mViewWidth,0,
-                        new int[]{Color.RED,Color.BLUE,Color.RED},
-                        null, Shader.TileMode.CLAMP);
-                //将该属性赋予给paint对象的shader渲染器
-                mPaint.setShader(mLinearGradient);
-                mGradientMatrix =new Matrix();//获取矩阵
-            }
-        }
-    }
-
-
-
-
-}
